@@ -3,7 +3,130 @@
 <head>
   <meta charset="UTF-8" />
   <title>商业联盟 - 首页</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* 首页专属样式 */
+    .hero {
+      position: relative;
+      height: 80vh;
+      background: linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)),
+        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      animation: fadeIn 1.8s ease forwards;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 0.5em;
+      letter-spacing: 2px;
+      animation: slideUp 1.5s ease forwards;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 1.5em;
+      animation: slideUp 1.7s ease forwards;
+      opacity: 0.9;
+    }
+
+    .hero button {
+      background-color: #fff;
+      color: #111;
+      font-weight: 600;
+      border: none;
+      padding: 15px 40px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      animation: slideUp 1.9s ease forwards;
+    }
+
+    .hero button:hover {
+      background-color: #111;
+      color: #fff;
+    }
+
+    /* 动画关键帧 */
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes slideUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* 成员logo滚动区域 */
+    .member-logos {
+      margin: 60px auto;
+      max-width: 1100px;
+      overflow: hidden;
+      position: relative;
+      padding: 10px 0;
+      background: #fefefe;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgb(17 17 17 / 0.07);
+    }
+
+    .logo-track {
+      display: flex;
+      gap: 60px;
+      animation: scrollLogos 20s linear infinite;
+      align-items: center;
+    }
+
+    .logo-track img {
+      max-height: 70px;
+      filter: grayscale(70%);
+      transition: filter 0.3s ease;
+      cursor: pointer;
+    }
+
+    .logo-track img:hover {
+      filter: grayscale(0);
+      transform: scale(1.1);
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+
+    @keyframes scrollLogos {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .hero button {
+        font-size: 1rem;
+        padding: 12px 30px;
+      }
+      .logo-track {
+        gap: 30px;
+      }
+      .logo-track img {
+        max-height: 50px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -16,10 +139,24 @@
       <a href="join.html">加入我们</a>
     </nav>
   </header>
+
   <section class="hero">
     <h2>连接商业力量 · 共创行业未来</h2>
     <p>商业联盟致力于构建一个跨行业、互信、高效的企业合作生态圈。</p>
+    <button onclick="window.location.href='join.html'">立即加入我们</button>
   </section>
+
+  <section class="member-logos" aria-label="联盟成员logo展示">
+    <div class="logo-track" aria-hidden="true">
+      <img src="https://via.placeholder.com/150x70?text=先锋科技" alt="先锋科技有限公司" />
+      <img src="https://via.placeholder.com/150x70?text=新锐传媒" alt="新锐传媒集团" />
+      <img src="https://via.placeholder.com/150x70?text=合聚供应链" alt="合聚供应链" />
+      <img src="https://via.placeholder.com/150x70?text=先锋科技" alt="先锋科技有限公司" />
+      <img src="https://via.placeholder.com/150x70?text=新锐传媒" alt="新锐传媒集团" />
+      <img src="https://via.placeholder.com/150x70?text=合聚供应链" alt="合聚供应链" />
+    </div>
+  </section>
+
   <footer>
     <p>&copy; 2025 商业联盟</p>
   </footer>
