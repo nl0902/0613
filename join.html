@@ -2,8 +2,79 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <title>商业联盟 - 加入我们</title>
-  <link rel="stylesheet" href="style.css">
+  <title>加入我们 - 商业联盟</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    main {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgb(17 17 17 / 0.07);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 700;
+      color: #111;
+    }
+    form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"],
+    form textarea,
+    form input[type="file"] {
+      width: 100%;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      resize: vertical;
+    }
+    form input[type="text"]:focus,
+    form input[type="email"]:focus,
+    form input[type="tel"]:focus,
+    form textarea:focus,
+    form input[type="file"]:focus {
+      border-color: #111;
+      outline: none;
+    }
+    form textarea {
+      min-height: 120px;
+    }
+    form button {
+      display: block;
+      width: 100%;
+      background-color: #111;
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 15px 0;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+      transition: background-color 0.3s ease;
+    }
+    form button:hover {
+      background-color: #444;
+    }
+    .note {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: -15px;
+      margin-bottom: 25px;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -16,14 +87,49 @@
       <a href="join.html">加入我们</a>
     </nav>
   </header>
-  <section>
-    <h2>欢迎加入商业联盟</h2>
-    <p>请将公司简介、联系人、联系方式发送至：</p>
-    <p><strong>join@bizalliance.cn</strong></p>
-    <p>我们将在三个工作日内与您联系。</p>
-  </section>
+
+  <main>
+    <h2>加入我们</h2>
+    <form id="joinForm" action="#" method="post" enctype="multipart/form-data" novalidate>
+      <label for="companyName">公司名称<span style="color:red;">*</span></label>
+      <input type="text" id="companyName" name="companyName" required placeholder="请输入公司名称" />
+
+      <label for="contactPerson">联系人<span style="color:red;">*</span></label>
+      <input type="text" id="contactPerson" name="contactPerson" required placeholder="请输入联系人姓名" />
+
+      <label for="phone">联系电话<span style="color:red;">*</span></label>
+      <input type="tel" id="phone" name="phone" required placeholder="请输入联系电话" pattern="[\d\s\-+()]{7,}" title="请输入有效的电话号码" />
+
+      <label for="email">邮箱<span style="color:red;">*</span></label>
+      <input type="email" id="email" name="email" required placeholder="请输入邮箱地址" />
+
+      <label for="introduction">入盟理由 / 公司简介</label>
+      <textarea id="introduction" name="introduction" placeholder="请简要介绍您的企业及加入联盟的原因"></textarea>
+
+      <label for="fileUpload">上传企业资质（可选）</label>
+      <input type="file" id="fileUpload" name="fileUpload" accept=".pdf,.jpg,.png,.jpeg" />
+
+      <button type="submit">提交申请</button>
+    </form>
+  </main>
+
   <footer>
     <p>&copy; 2025 商业联盟</p>
   </footer>
+
+  <script>
+    // 简单表单验证
+    document.getElementById('joinForm').addEventListener('submit', function(e) {
+      const form = e.target;
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        alert('请填写所有必填项，且确保信息有效。');
+        return false;
+      }
+      alert('您的申请已提交，我们会尽快与您联系！');
+      // 这里可以添加AJAX提交逻辑
+      e.preventDefault();
+    });
+  </script>
 </body>
 </html>
